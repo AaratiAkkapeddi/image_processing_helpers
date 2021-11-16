@@ -9,6 +9,19 @@ import cv2
 import os
 import random
 import sys
+parser = argparse.ArgumentParser()
+# Add an argument
+parser.add_argument('--video', type=str, required=True)
+parser.add_argument('--outdir', type=str, required=True)
+# Print "Hello" + the user input argument
+# Parse the argument
+args = parser.parse_args()
+print('processing images from', args.video)
+print('saving images to', args.outdir)
+video = args.video
+outdir = args.outdir
+if not os.path.isdir(outdir):
+	os.mkdir(""+outdir)
 # initialize dlib's face detector (HOG-based) and then create
 # the facial landmark predictor and the face aligner
 detector = dlib.get_frontal_face_detector()
@@ -31,9 +44,9 @@ def center_face (image):
 		faceAligned = fa.align(image, gray, rect)
 
 		# display the output images
-		cv2.imwrite("./birthday/"+ str(random.randint(0,90)) + "_"+ "frame%d.jpg" % count, faceAligned)
+		cv2.imwrite(outdir+"/"+ str(random.randint(0,90)) + "_"+ "frame%d.jpg" % count, faceAligned)
 		
-vidcap = cv2.VideoCapture("../vhs2frames/baby_first_birthday.mp4")
+vidcap = cv2.VideoCapture(video)
 success,image = vidcap.read()
 count = 0
 success = True

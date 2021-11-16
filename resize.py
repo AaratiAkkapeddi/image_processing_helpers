@@ -1,8 +1,22 @@
 #import dependencies 
 from PIL import Image
 import os, sys
+import argparse
 #set file path
-path = './output_all_augmented/'
+parser = argparse.ArgumentParser()
+# Add an argument
+parser.add_argument('--indir', type=str, required=True)
+parser.add_argument('--outdir', type=str, required=True)
+# Print "Hello" + the user input argument
+# Parse the argument
+args = parser.parse_args()
+print('processing images from', args.indir)
+print('saving images to', args.outdir)
+folder = args.indir
+outdir = args.outdir
+if not os.path.isdir(outdir):
+	os.mkdir(""+outdir)
+path = folder
 dirs = os.listdir( path )
 def resize():
     
@@ -16,6 +30,6 @@ def resize():
             imResize = im.resize((512,512), Image.ANTIALIAS)
             
             #save the images as image name + resized
-            imResize.save('resized/'+item + ' resized.jpg', 'JPEG', quality=100, optimize=True)
+            imResize.save(outdir+'/'+item + ' resized.jpg', 'JPEG', quality=100, optimize=True)
 #run the funtion
 resize()
