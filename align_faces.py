@@ -24,7 +24,7 @@ print('processing images from', args.indir)
 print('saving images to', args.outdir)
 folder = args.indir
 outdir = args.outdir
-if not os.path.isdir("/content/drive/My Drive/image_processing_helpers"):
+if not os.path.isdir(outdir):
 	os.mkdir(""+outdir)
 
 
