@@ -13,12 +13,26 @@ import random
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 fa = FaceAligner(predictor, desiredFaceWidth=2048)
+parser = argparse.ArgumentParser()
+# Add an argument
+parser.add_argument('--indir', type=str, required=True)
+parser.add_argument('--outdir', type=str, required=True)
+# Print "Hello" + the user input argument
+# Parse the argument
+args = parser.parse_args()
+print('processing images from', args.indir)
+print('saving images to', args.outdir)
+folder = args.indir
+outdir = args.outdir
+if not os.path.isdir("/content/drive/My Drive/image_processing_helpers"):
+	os.mkdir(""+outdir)
+
 
 def center_face (filename):
 	print(filename)
 	if ".jpg" in filename:
 		# load the input image, resize it, and convert it to grayscale
-		image = cv2.imread('./mom_augmented/' + filename)
+		image = cv2.imread(folder+'/' + filename)
 		image = imutils.resize(image, width=940)
 		gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
@@ -34,8 +48,10 @@ def center_face (filename):
 			faceAligned = fa.align(image, gray, rect)
 
 			# display the output images
-			cv2.imwrite("./output_mom2/"+ str(random.randint(0,90)) + "_"+filename, faceAligned)
-		
+			cv2.imwrite(outdir + "/"+ str(random.randint(0,90)) + "_"+filename, faceAligned)
+	
 #iterate through folder of images
-for filename in os.listdir('./mom_augmented/'):
+for filename in os.listdir(folder + '/'):
     center_face(filename)
+
+
