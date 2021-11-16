@@ -16,7 +16,8 @@ folder = args.indir
 outdir = args.outdir
 if not os.path.isdir(outdir):
 	os.mkdir(""+outdir)
-path = folder
+
+path = folder +"/"
 dirs = os.listdir( path )
 def resize():
     
