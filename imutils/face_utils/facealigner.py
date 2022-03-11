@@ -77,7 +77,7 @@ class FaceAligner:
 		# apply the affine transformation
 		# (w, h) = (self.desiredFaceWidth, self.desiredFaceHeight)
 		# (w, h) = (4096, 3072)
-		(w, h) = (1040, 1040)
+		(w, h) = (940, 940)
 		output = cv2.warpAffine(image, M, (w,h),
 			flags=cv2.INTER_CUBIC)
 
