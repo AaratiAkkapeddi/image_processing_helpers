@@ -31,7 +31,7 @@ if not os.path.isdir(outdir):
 
 def center_face (filename):
 	print(filename)
-	if ".jpg" in filename or ".png" in filename or ".jpeg" in filename:
+	if ".jpg" in filename or ".png" in filename or ".jpeg" in filename or ".JPG" in filename:
 		# load the input image, resize it, and convert it to grayscale
 		image = cv2.imread(folder+'/' + filename)
 		image = imutils.resize(image, width=940)
