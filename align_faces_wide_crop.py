@@ -49,7 +49,7 @@ def center_face (filename):
 			faceAligned = fa.align(image, gray, rect)
 
 			# display the output images
-			cv2.imwrite(outdir + "/"+ str(random.randint(0,90)) + "_"+filename, faceAligned)
+			cv2.imwrite(outdir + "/"+ str(random.randint(0,90)) + "_"+filename + ".jpg", faceAligned)
 	
 #iterate through folder of images
 for filename in os.listdir(folder + '/'):
