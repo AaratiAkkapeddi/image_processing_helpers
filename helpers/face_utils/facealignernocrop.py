@@ -7,7 +7,7 @@ import cv2
 
 class FaceAlignerNoCrop:
 	def __init__(self, predictor, desiredLeftEye=(0.35, 0.35),
-		desiredFaceWidth=1130, desiredFaceHeight=None):
+		desiredFaceWidth=930, desiredFaceHeight=None):
 		# store the facial landmark predictor, desired output left
 		# eye position, and desired output face width + height
 		self.predictor = predictor
