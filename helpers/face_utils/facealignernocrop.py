@@ -59,14 +59,15 @@ class FaceAlignerNoCrop:
 		desiredDist = (desiredRightEyeX - self.desiredLeftEye[0])
 		desiredDist *= self.desiredFaceWidth
 		# scale = 200 / dist *
-		scale = 200 / dist
+		scale = 150 / dist
 
 		# compute center (x, y)-coordinates (i.e., the median point)
 		# between the two eyes in the input image
-		eyesCenter = (int((leftEyeCenter[0] + rightEyeCenter[0]) // 2),int(
-			(leftEyeCenter[1] + rightEyeCenter[1]) // 2))
+		eyesCenter = (int((leftEyeCenter[0] + rightEyeCenter[0]) // 2),
+			int((leftEyeCenter[1] + rightEyeCenter[1]) // 2))
 
 		# grab the rotation matrix for rotating and scaling the face
+		angle = 0
 		M = cv2.getRotationMatrix2D(eyesCenter, angle, scale)
 
 		# update the translation component of the matrix
