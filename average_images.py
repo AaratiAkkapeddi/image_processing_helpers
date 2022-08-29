@@ -49,9 +49,6 @@ def average(file):
 	cover = None
 	if(".png" in file or ".jpg" in file or "jpeg" in file):
 		cover = cv2.imread(indir+"/"+file)
-		print(file)
-
-	print(cover)
 	# if(file.split('.')[0].endswith('1')):
 		# if the image is None, then there was an issue loading it
 			# (this happens for ~3 images in the dataset, likely due to
@@ -59,7 +56,6 @@ def average(file):
 	if cover is not None:
 			# resize the magazine cover, flatten it into a single
 			# list, and update the list of covers
-		print(file)
 		cover = cv2.resize(cover, (8840, 8840)).flatten()
 		covers.append(cover)
 
