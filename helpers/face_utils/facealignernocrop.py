@@ -59,7 +59,7 @@ class FaceAlignerNoCrop:
 		desiredDist = (desiredRightEyeX - self.desiredLeftEye[0])
 		desiredDist *= self.desiredFaceWidth
 		# scale = 200 / dist *
-		scale = 150 / dist
+		scale = 50 / dist
 
 		# compute center (x, y)-coordinates (i.e., the median point)
 		# between the two eyes in the input image
