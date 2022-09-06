@@ -89,7 +89,7 @@ class FaceAlignerNoCrop:
 		_, alpha = cv2.threshold(tmp, 0, 255, cv2.THRESH_BINARY)
 		# Using cv2.split() to split channels 
 		# of coloured image
-		b, g, r = cv2.split(src)
+		b, g, r = cv2.split(output)
 		# Making list of Red, Green, Blue
 		# Channels and alpha
 		rgba = [0, 0, 0, 0]
