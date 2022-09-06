@@ -92,7 +92,7 @@ class FaceAlignerNoCrop:
 		b, g, r = cv2.split(output)
 		# Making list of Red, Green, Blue
 		# Channels and alpha
-		rgba = [0, 0, 0, 0]
+		rgba = [b, g, r, alpha]
 		# Using cv2.merge() to merge rgba
 		# into a coloured/multi-channeled image
 		dst = cv2.merge(rgba, 4)
