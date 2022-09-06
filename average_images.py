@@ -17,22 +17,6 @@ args = parser.parse_args()
 indir = args.indir
 outdir = args.outdir
 
-def filter_by_decade(decade, data):
-	# initialize the list of filtered rows
-	filtered = []
-
-	# loop over the rows in the data list
-	for row in data:
-		# grab the publication date of the magazine
-		pub = int(row["pubDate"].split("-")[0])
-
-		# if the publication date falls within the current decade,
-		# then update the filtered list of data
-		if pub >= decade and pub < decade + 10:
-			filtered.append(row)
-
-	# return the filtered list of data
-	return filtered
 
 # construct the argument parse and parse the arguments
 # ap = argparse.ArgumentParser()
@@ -56,7 +40,7 @@ def average(file):
 	if cover is not None:
 			# resize the magazine cover, flatten it into a single
 			# list, and update the list of covers
-		cover = cv2.resize(cover, (8840, 8840)).flatten()
+		cover = cv2.resize(cover, (8840, 8840))
 		covers.append(cover)
 
 
@@ -67,7 +51,7 @@ import glob
 for filename in os.listdir(indir + '/'):
     average(filename)
 
-avg = np.average(covers, axis=0).reshape((8840, 8840, 3)).astype("uint8")
+avg = np.average(covers, axis=0).reshape((8840, 8840, 4)).astype("uint8")
 p = "{}/{}.png".format(outdir, 'averaged')
 cv2.imwrite(p, avg)
 
