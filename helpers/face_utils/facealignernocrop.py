@@ -80,7 +80,8 @@ class FaceAlignerNoCrop:
 		# (w, h) = (4096, 3072)
 		(w, h) = (8840, 8840)
 		output = cv2.warpAffine(image, M, (w,h),
-			flags=cv2.INTER_CUBIC)
+			flags=cv2.INTER_CUBIC,borderMode=cv2.BORDER_CONSTANT,
+                           borderValue=(0,0,0,0))
 
 		# return the aligned face
 		return output
