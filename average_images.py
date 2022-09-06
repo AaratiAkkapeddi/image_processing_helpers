@@ -32,7 +32,7 @@ covers = []
 def average(file):
 	cover = None
 	if(".png" in file or ".jpg" in file or "jpeg" in file):
-		cover = cv2.imread(indir+"/"+file)
+		cover = cv2.imread(indir+"/"+file, cv2.IMREAD_UNCHANGED)
 	# if(file.split('.')[0].endswith('1')):
 		# if the image is None, then there was an issue loading it
 			# (this happens for ~3 images in the dataset, likely due to
