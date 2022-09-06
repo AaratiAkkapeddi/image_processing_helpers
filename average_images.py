@@ -51,7 +51,7 @@ import glob
 for filename in os.listdir(indir + '/'):
     average(filename)
 
-avg = np.average(covers, axis=0).reshape((8840, 8840, 4)).astype("uint8")
+avg = np.average(covers, axis=0).reshape((8840, 8840, 3)).astype("uint8")
 p = "{}/{}.png".format(outdir, 'averaged')
 cv2.imwrite(p, avg)
 
