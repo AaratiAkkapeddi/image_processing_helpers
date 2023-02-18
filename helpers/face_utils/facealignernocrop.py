@@ -59,7 +59,7 @@ class FaceAlignerNoCrop:
 		desiredDist = (desiredRightEyeX - self.desiredLeftEye[0])
 		desiredDist *= self.desiredFaceWidth
 		# scale = 200 / dist *
-		scale = 150 / dist
+		scale = 200 / dist
 
 		# compute center (x, y)-coordinates (i.e., the median point)
 		# between the two eyes in the input image
@@ -77,7 +77,7 @@ class FaceAlignerNoCrop:
 		M[1, 2] += (tY - eyesCenter[1]) 
 		# apply the affine transformation
 		# (w, h) = (self.desiredFaceWidth, self.desiredFaceHeight)
-		(w, h) = (2048, 1536)
+		(w, h) = (2048, 2048)
 		# (w, h) = (8840, 8840)
 		output = cv2.warpAffine(image, M, (w,h),
 			flags=cv2.INTER_CUBIC,borderMode=cv2.BORDER_CONSTANT,

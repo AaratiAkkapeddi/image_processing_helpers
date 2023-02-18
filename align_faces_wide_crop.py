@@ -13,7 +13,7 @@ import random
 # the facial landmark predictor and the face aligner
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
-fa = FaceAlignerNoCrop(predictor, desiredFaceWidth=2048)
+fa = FaceAlignerNoCrop(predictor, desiredFaceWidth=768)
 parser = argparse.ArgumentParser()
 # Add an argument
 parser.add_argument('--indir', type=str, required=True)
