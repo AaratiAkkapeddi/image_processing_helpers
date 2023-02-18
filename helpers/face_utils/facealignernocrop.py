@@ -71,14 +71,14 @@ class FaceAlignerNoCrop:
 		M = cv2.getRotationMatrix2D(eyesCenter, angle, scale)
 
 		# update the translation component of the matrix
-		tX = 4420 #512
-		tY = 4000
+		tX = 2048 #512
+		tY = 1536
 		M[0, 2] += (tX - eyesCenter[0])
 		M[1, 2] += (tY - eyesCenter[1]) 
 		# apply the affine transformation
 		# (w, h) = (self.desiredFaceWidth, self.desiredFaceHeight)
-		# (w, h) = (4096, 3072)
-		(w, h) = (8840, 8840)
+		(w, h) = (4096, 3072)
+		# (w, h) = (8840, 8840)
 		output = cv2.warpAffine(image, M, (w,h),
 			flags=cv2.INTER_CUBIC,borderMode=cv2.BORDER_CONSTANT,
                            borderValue=(0,0,0,0))
