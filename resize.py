@@ -28,9 +28,9 @@ def resize():
             f, e = os.path.splitext(path+item)
             
             #set the output size: 256,256 or 512,512 or 1024,1024
-            imResize = im.resize((512,512), Image.ANTIALIAS)
+            imResize = im.resize((1024,1024), Image.ANTIALIAS)
             
             #save the images as image name + resized
-            imResize.save(outdir+'/'+item + ' resized.jpg', 'JPEG', quality=100, optimize=True)
+            imResize.save(outdir+'/'+item + '-1024.jpg', 'JPEG', quality=100, optimize=True)
 #run the funtion
 resize()
