@@ -1,5 +1,6 @@
 #import dependencies 
 from PIL import Image
+import PIL
 import os, sys
 import argparse
 #set file path
@@ -25,10 +26,11 @@ def resize():
     for item in dirs:
         if os.path.isfile(path+item):
             im = Image.open(path+item)
+            im = im.convert('RGB')
             f, e = os.path.splitext(path+item)
             
             #set the output size: 256,256 or 512,512 or 1024,1024
-            imResize = im.resize((1024,1024), Image.ANTIALIAS)
+            imResize = im.resize((1024,1024), PIL.Image.LANCZOS)
             
             #save the images as image name + resized
             imResize.save(outdir+'/'+item + '-1024.jpg', 'JPEG', quality=100, optimize=True)
